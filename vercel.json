@@ -1,0 +1,84 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "echo 'Static frontend — no build step required'",
+  "outputDirectory": "apps/web/landing",
+  "redirects": [
+    {
+      "source": "/legal/license.html",
+      "destination": "/legal/license",
+      "permanent": true
+    },
+    {
+      "source": "/legal/vendor-agreement.html",
+      "destination": "/legal/vendor-agreement",
+      "permanent": true
+    },
+    {
+      "source": "/legal/vendor.html",
+      "destination": "/legal/vendor-agreement",
+      "permanent": true
+    },
+    {
+      "source": "/vendor-agreement",
+      "destination": "/legal/vendor-agreement",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/legal/license",
+      "destination": "/static/legal/license.html"
+    },
+    {
+      "source": "/legal/vendor-agreement",
+      "destination": "/static/legal/vendor-agreement.html"
+    },
+    {
+      "source": "/lockersphere",
+      "destination": "/static/lockersphere/index.html"
+    },
+    {
+      "source": "/lockersphere/(.*)",
+      "destination": "/static/lockersphere/index.html"
+    },
+    {
+      "source": "/workspace",
+      "destination": "/static/workspace/index.html"
+    },
+    {
+      "source": "/workspace/(.*)",
+      "destination": "/static/workspace/index.html"
+    },
+    {
+      "source": "/command-center/(.*)",
+      "destination": "/command-center/index.html"
+    },
+    {
+      "source": "/command-center/veklom-terminal/(.*)",
+      "destination": "/command-center/veklom-terminal/index.html"
+    },
+    {
+      "source": "/command-center/quantum-terminal/(.*)",
+      "destination": "/command-center/quantum-terminal/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/command-center/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
+  ]
+}
